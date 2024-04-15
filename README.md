@@ -27,6 +27,34 @@ This exercise is purely API based, and will not have any frontend components. Pl
 
 The exercise requires Ruby 3.3.0. Simply clone the repo, and run `bundle` to get started. This will install Rails 7.1.2, and the other specified gems.
 
+## Tests
+
+Run `bundle exec rspec` to run unit tests
+
+## Rails Console
+
+Run `rails console`
+
+Create a Tradeline and Deposit (note this skips api validation for deposit amounts) 
+```ruby
+tradeline = Tradeline.create(amount: 1000, name: "Tradeline One")
+tradeline.deposits.create(amount: 200, date: Date.today)
+tradeline.outstanding_balance # Should output 800
+```
+
+## Serve Locally
+
+Run `rails server`
+
+Make API calls for example  
+```bash
+GET http://localhost:3000/tradelines
+```
+```bash
+POST http://localhost:3000/tradelines/1/deposits
+{ "deposit": {"amount": "200", "deposit_date": "2024-04-15"} }
+```
+
 ## Submission
 
 Please do not fork the repo; if forked accidentally, please delete the fork. For review, either of the following methods for submission are preferred:
